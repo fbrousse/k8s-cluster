@@ -70,4 +70,20 @@ kubectl expose deployment DEPLOYMENT --type=LoadBalancer
 
 kubectl create -f ingress.yml
 
+## FINAL THOUGHTS
 
+https://cloud.google.com/community/tutorials/nginx-ingress-gke
+
+```
+kubectl run hello-app --image=gcr.io/google-samples/hello-app:1.0 --port=8080
+kubectl expose deployment hello-app
+helm install --name nginx-ingress stable/nginx-ingress --set rbac.create=true
+kubectl get service nginx-ingress-controller
+curl -I http://35.240.18.83
+curl -I http://35.240.18.83/healthz
+kubectl apply -f ingress3.yml
+kubectl get ingress ingress-resource
+curl -I http://35.240.18.83/hello
+curl http://35.240.18.83/hello
+kubectl get ingress ingress-resource
+```

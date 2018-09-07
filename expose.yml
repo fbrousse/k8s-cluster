@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: traefik
+spec:
+  type: LoadBalancer
+  selector:
+    app: traefik
+    tier: proxy
+  ports:
+  - port: 80
+    targetPort: 80
