@@ -82,6 +82,20 @@ kubectl expose deployment DEPLOYMENT --type=LoadBalancer
 
  kubectl create -f ingress.yml
 
+## Access to the kubernetes Dashboard
+
+Launch the proxy
+
+```
+kubectl proxy
+```
+
+Connect with the TOKEN below
+
+```
+kubectl config view | grep -A10 "name: $(kubectl config current-context)" | awk '$1=="access-token:"{print $2}'
+```
+
 ## FINAL THOUGHTS
 
 https://cloud.google.com/community/tutorials/nginx-ingress-gke

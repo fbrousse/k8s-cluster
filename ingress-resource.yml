@@ -1,0 +1,23 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: ingress-resource
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+spec:
+  rules:
+  - host: test.dev.yesiddo.name
+    http:
+      paths:
+      - path: /hello
+        backend:
+          serviceName: web
+          servicePort: 8080
+  - host: yesiddo.dev.yesiddo.name
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: wordpress
+          servicePort: 80
